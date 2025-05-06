@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>{{ active_project.name }}</title>
+</head>
+<body>
+    <h1>{{ active_project.name }}</h1>
+    <p><strong>Status:</strong> {{ active_project.get_status_display }}</p>
+    {% if active_project.client %}
+    <p><strong>Client:</strong> {{ active_project.client }}</p>
+    {% endif %}
+    {% if active_project.start_date %}
+    <p><strong>Start Date:</strong> {{ active_project.start_date }}</p>
+    {% endif %}
+    {% if active_project.expected_end_date %}
+    <p><strong>Expected End Date:</strong> {{ active_project.expected_end_date }}</p>
+    {% endif %}
+    {% if active_project.description %}
+    <p><strong>Description:</strong> {{ active_project.description }}</p>
+    {% endif %}
+
+    <h2>Updates</h2>
+    {% if active_project.updates.all %}
+    <ul>
+        {% for update in active_project.updates.all %}
+        <li>
+            <strong>{{ update.timestamp }}</strong>: {{ update.content|linebreaksbr }}
+            {% if update.deliverables.all %}
+            <ul>
+                {% for deliverable in update.deliverables.all %}
+                <li><a href="{{ deliverable.file.url }}" target="_blank">Deliverable: {{ deliverable.name }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No updates yet.</p>
+    {% endif %}
+
+    <p><a href="{% url 'active_project_list' %}">Back to Active Projects</a></p>
+    <p><a href="{% url 'homepage' %}">Back to Homepage</a></p>
+</body>
+</html>

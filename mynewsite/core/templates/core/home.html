@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homepage</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Welcome to the Homepage!</h1>
+    <nav>
+        <button><a href="{% url 'project_list' %}">Projects</a></button>
+        <button><a href="{% url 'team_member_list' %}">Team</a></button>
+        <button><a href="{% url 'resource_list' %}">Resources</a></button>
+        <button><a href="{% url 'inquiry_list' %}">Inquiries</a></button>
+        <button><a href="{% url 'active_project_list' %}">Active Projects</a></button>
+    </nav>
+</body>
+</html>

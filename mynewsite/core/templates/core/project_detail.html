@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>{{ project.title }}</title>
+</head>
+<body>
+    <h1>{{ project.title }}</h1>
+    {% if project.featured_image %}
+    <img src="{{ project.featured_image.url }}" alt="{{ project.title }}" style="max-width: 500px;">
+    {% endif %}
+    <p><strong>Description:</strong> {{ project.description }}</p>
+    {% if project.client %}
+    <p><strong>Client:</strong> {{ project.client }}</p>
+    {% endif %}
+    {% if project.start_date %}
+    <p><strong>Start Date:</strong> {{ project.start_date }}</p>
+    {% endif %}
+    {% if project.end_date %}
+    <p><strong>End Date:</strong> {{ project.end_date }}</p>
+    {% endif %}
+    {% if project.technologies_used %}
+    <p><strong>Technologies Used:</strong> {{ project.technologies_used }}</p>
+    {% endif %}
+
+    {% if project.images.all %}
+    <h2>Project Gallery</h2>
+    <div>
+        {% for image in project.images.all %}
+        <img src="{{ image.image.url }}" alt="{{ image.caption }}" style="max-width: 300px; margin-right: 10px; margin-bottom: 10px;">
+        {% if image.caption %}
+        <p class="caption">{{ image.caption }}</p>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if project.testimonials.all %}
+    <h2>Testimonials</h2>
+    {% for testimonial in project.testimonials.all %}
+    <blockquote>
+        <p>{{ testimonial.text }}</p>
+        <cite>- {{ testimonial.author }}</cite>
+    </blockquote>
+    {% endfor %}
+    {% endif %}
+
+    <p><a href="{% url 'project_list' %}">Back to Projects</a></p>
+    <p><a href="{% url 'homepage' %}">Back to Homepage</a></p>
+</body>
+</html>

@@ -1,0 +1,177 @@
+/* Base Styles */
+body, html {
+    height: 100%;
+    width: 100%;
+    /* Add these lines for the Lazarev background image */
+    background-image: url(https://lazarev.kiev.ua/la24/reel-cover.webp);
+    background-size: cover;
+    background-repeat: no-repeat; /* Or adjust as needed */
+    background-position: center center; /* Optional: Center the image */
+    background-color: #111; /* Fallback background color */
+    /* ... other body styles ... */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212; /* Deeper dark background */
+    color: #f0f0f0; /* Light gray text for better readability */
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    min-height: 100vh; /* Ensure full viewport height */
+    /* Comment out or remove the following line to use the Lazarev background */
+    /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 2 2"><rect width="1" height="1" fill="#1a1a1a"/><rect x="1" y="1" width="1" height="1" fill="#1a1a1a"/></svg>'); */
+    background-size: 4px 4px; /* Subtle texture */
+}
+
+.container {
+    max-width: 1200px;
+    width: 90%; /* Adjust width for responsiveness */
+    padding: 40px;
+    border-radius: 10px;
+    background-color: rgba(20, 20, 20, 0.9); /* Slightly transparent dark container */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center; /* Center text within the container */
+}
+
+h1 {
+    font-size: 3.5em;
+    margin-bottom: 1.5em;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+h2 {
+    font-size: 2.5em;
+    margin-bottom: 1.2em;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 1.8em;
+    margin-bottom: 1em;
+    font-weight: bold;
+}
+
+a {
+    color: #64ffda; /* Teal or cyan accent color */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #a7ffe3;
+    text-decoration: none; /* Remove underline on hover for a cleaner look */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column; /* Stack items by default */
+    gap: 15px; /* Spacing between list items */
+    align-items: center; /* Center list items */
+}
+
+li {
+    width: 100%; /* Make list items full width in the flex container */
+}
+
+/* Buttons */
+nav {
+    display: flex;
+    gap: 15px; /* Increased gap for better spacing */
+    margin-top: 25px; /* Slightly increased top margin */
+    justify-content: center; /* Center the buttons */
+}
+
+nav button {
+    background-color: green; /* Vibrant green background */
+    color: white; /* White text for high contrast */
+    border: 2px solid green; /* Green border */
+    padding: 15px 30px; /* Further increased padding for larger buttons */
+    border-radius: 10px; /* Slightly more rounded corners */
+    cursor: pointer;
+    font-size: 1.2em; /* Slightly larger font size */
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+nav button:hover {
+    background-color: transparent; /* Transparent on hover */
+    color: green; /* Green text on hover */
+    border-color: green; /* Keep the green border on hover */
+}
+
+nav button a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+nav button:hover a {
+    color: inherit;
+}
+
+/* Flex Containers for Layout */
+.project-list ul,
+.team-list ul,
+.resource-list ul {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: center; /* Distribute items evenly with space around */
+    gap: 30px;
+}
+
+.project-item,
+.team-member,
+.resource-item {
+    background-color: #1e1e1e;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    text-align: center; /* Center content within these items */
+    flex-basis: calc(33% - 60px); /* Adjust for desired number of columns and spacing */
+    min-width: 250px; /* Ensure a minimum width for responsiveness */
+}
+
+.team-member img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+/* Adjustments for specific content */
+.project-detail .container,
+.team-member-detail .container,
+.resource-detail .container,
+.inquiry-list .container,
+.active-project-list .container,
+.active-project-detail .container {
+    text-align: left; /* Align text to the left for detail pages */
+}
+
+.inquiry-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: #f0f0f0;
+}
+
+.inquiry-list th, .inquiry-list td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+.inquiry-list th {
+    font-weight: bold;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>Inquiries</title>
+</head>
+<body>
+    <h1>Client Inquiries</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Submitted At</th>
+                <th>Project Overview</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for inquiry in inquiries %}
+            <tr>
+                <td>{{ inquiry.name }}</td>
+                <td>{{ inquiry.email }}</td>
+                <td>{{ inquiry.submitted_at }}</td>
+                <td>{{ inquiry.project_overview|truncatechars:50 }}</td>
+                <td><a href="#">View Details</a> (This would be a link to a detailed inquiry view later)</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="5">No inquiries yet.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p><a href="{% url 'homepage' %}">Back to Homepage</a></p>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Homepage</title>
+</head>
+<body>
+    <h1>Welcome to our AI/ML Product Design Agency!</h1>
+    <p>Explore our projects and team.</p>
+    <p><a href="{% url 'project_list' %}">View Projects</a></p>
+    <p><a href="{% url 'team_member_list' %}">Meet the Team</a></p>
+    <p><a href="{% url 'resource_list' %}">Our Resources</a></p>
+    <p><a href="{% url 'inquiry_list' %}">Client Inquiries (Admin)</a></p>
+    <p><a href="{% url 'active_project_list' %}">Active Projects</a></p>
+</body>
+</html>

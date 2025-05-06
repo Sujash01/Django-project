@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>{{ resource.title }}</title>
+</head>
+<body>
+    <h1>{{ resource.title }}</h1>
+    <p><strong>Type:</strong> {{ resource.get_resource_type_display }}</p>
+    <p><strong>Description:</strong> {{ resource.description }}</p>
+    {% if resource.url %}
+    <p><a href="{{ resource.url }}" target="_blank">View Resource</a></p>
+    {% elif resource.file %}
+    <p><a href="{{ resource.file.url }}" target="_blank">Download File</a></p>
+    {% endif %}
+    {% if resource.category %}
+    <p><strong>Category:</strong> {{ resource.category }}</p>
+    {% endif %}
+    {% if resource.tags %}
+    <p><strong>Tags:</strong> {{ resource.tags }}</p>
+    {% endif %}
+    {% if resource.published_date %}
+    <p><strong>Published Date:</strong> {{ resource.published_date }}</p>
+    {% endif %}
+    <p><a href="{% url 'resource_list' %}">Back to Resources</a></p>
+    <p><a href="{% url 'homepage' %}">Back to Homepage</a></p>
+</body>
+</html>

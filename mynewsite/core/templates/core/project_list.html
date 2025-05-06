@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>Projects</title>
+</head>
+<body>
+    <h1>Our Projects</h1>
+    <ul>
+        {% for project in projects %}
+        <li>
+            <a href="{% url 'project_detail' project.slug %}">{{ project.title }}</a>
+            {% if project.client %} - Client: {{ project.client }}{% endif %}
+        </li>
+        {% empty %}
+        <li>No projects available.</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'homepage' %}">Back to Homepage</a></p>
+</body>
+</html>

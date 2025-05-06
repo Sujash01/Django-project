@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>{{ team_member.name }}</title>
+</head>
+<body>
+    <h1>{{ team_member.name }}</h1>
+    {% if team_member.profile_image %}
+    <img src="{{ team_member.profile_image.url }}" alt="{{ team_member.name }}" style="max-width: 200px;">
+    {% endif %}
+    {% if team_member.title %}
+    <p><strong>Title:</strong> {{ team_member.title }}</p>
+    {% endif %}
+    {% if team_member.bio %}
+    <p><strong>Bio:</strong> {{ team_member.bio|linebreaksbr }}</p>
+    {% endif %}
+    {% if team_member.expertise %}
+    <p><strong>Expertise:</strong> {{ team_member.expertise }}</p>
+    {% endif %}
+    {% if team_member.skills %}
+    <p><strong>Skills:</strong> {{ team_member.skills }}</p>
+    {% endif %}
+    {% if team_member.portfolio_url %}
+    <p><strong>Portfolio:</strong> <a href="{{ team_member.portfolio_url }}" target="_blank">View Portfolio</a></p>
+    {% endif %}
+    <p><a href="{% url 'team_member_list' %}">Back to Team</a></p>
+    <p><a href="{% url 'homepage' %}">Back to Homepage</a></p>
+</body>
+</html>

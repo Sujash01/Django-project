@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>Resources</title>
+</head>
+<body>
+    <h1>Our Resources</h1>
+    <ul>
+        {% for resource in resources %}
+        <li>
+            <a href="{% url 'resource_detail' resource.slug %}">{{ resource.title }}</a>
+            ({{ resource.get_resource_type_display }})
+            {% if resource.category %} - Category: {{ resource.category }}{% endif %}
+            {% if resource.published_date %} (Published: {{ resource.published_date }}){% endif %}
+        </li>
+        {% empty %}
+        <li>No resources available.</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'homepage' %}">Back to Homepage</a></p>
+</body>
+</html>

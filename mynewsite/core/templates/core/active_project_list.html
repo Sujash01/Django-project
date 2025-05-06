@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>Active Projects</title>
+</head>
+<body>
+    <h1>Active Projects</h1>
+    <ul>
+        {% for project in active_projects %}
+        <li>
+            <a href="{% url 'active_project_detail' project.slug %}">{{ project.name }}</a>
+            ({{ project.get_status_display }})
+            {% if project.client %} - Client: {{ project.client }}{% endif %}
+        </li>
+        {% empty %}
+        <li>No active projects.</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'homepage' %}">Back to Homepage</a></p>
+</body>
+</html>
